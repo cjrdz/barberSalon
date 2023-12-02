@@ -10,7 +10,7 @@
    <div class="h-full px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
       <a href="../dashboard" class="flex items-center ps-2.5 mb-5">
          <img src="{{ asset('img/Logo.png') }}" class="h-6 me-1 sm:h-12" alt="BaberSalon" />
-         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">BaberSalon</span>
+         <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">BarberSalon</span>
       </a>
       <ul class="space-y-2 font-medium">
          <li>
