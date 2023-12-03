@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,5 +29,11 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+// Appointments views
+Route::get('/appointment/show', [AppointmentController::class, 'index'] )->name('appointment.show');
+
+// Services views
+Route::get('/service/show', [ServiceController::class,'index'])->name('service.show');
 
 require __DIR__.'/auth.php';
