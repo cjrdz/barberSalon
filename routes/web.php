@@ -3,7 +3,8 @@
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,5 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/CategoryShow',[CategoryController::class, 'index']); 
 
 });
+
+// Appointments views
+Route::get('/appointment/show', [AppointmentController::class, 'index'] )->name('appointment.show');
+
+// Services views
+Route::get('/service/show', [ServiceController::class,'index'])->name('service.show');
 
 require __DIR__.'/auth.php';
