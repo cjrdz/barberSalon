@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('contentShowService')
+@section('content')
 
 <!DOCTYPE html>
 <html>
