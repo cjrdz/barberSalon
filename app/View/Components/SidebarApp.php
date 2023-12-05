@@ -3,10 +3,10 @@
 namespace App\View\Components;
 
 use Closure;
-use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
+use Illuminate\Contracts\View\View;
 
-class sidebar-app extends Component
+class SidebarApp extends Component
 {
     /**
      * Create a new component instance.
@@ -15,7 +15,7 @@ class sidebar-app extends Component
     {
         //
     }
-
+    
     /**
      * Get the view / contents that represent the component.
      */
