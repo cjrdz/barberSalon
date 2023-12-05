@@ -30,11 +30,14 @@
             <!-- Page Content -->
             <main>
                 {{-- {{ $slot }} --}} 
-
-            <x-sidebar-app>
-            </x-sidebar-app>
+                
+                <x-sidebar-app>
+                </x-sidebar-app>
+                @yield('content')
 
             </main>
+        </div>
+        <div>
         </div>
     </body>
 </html>
