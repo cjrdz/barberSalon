@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('contentCitasShow')
+@section('content')
 
 <!DOCTYPE html>
 <html>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,6 +13,8 @@ class CategoryController extends Controller
     public function index()
     {
         //
+        $category = Category::all();
+        return view('/Empleados/CategoryShow', compact('category'));
     }
 
     /**
@@ -20,6 +23,9 @@ class CategoryController extends Controller
     public function create()
     {
         //
+        $category = Category::all();
+        return view('/Empleados/CategoryCreate')->with(['category' => $category]);;
+    
     }
 
     /**
@@ -28,6 +34,18 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         //
+        $data = request()->validate([
+
+            'name_category' => 'required',
+
+        ]);
+
+        //Insertar la informacion
+        Category::create($data);
+
+        //Redireccionar
+        return redirect('/category/show');
+
     }
 
     /**
@@ -41,17 +59,28 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id_category)
     {
         //
+        $category = Category::find($id_category);
+        return view('/Empleados/CategoryUpdate')->with(['category' => $category]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $categories)
     {
         //
+        $data = request()->validate([
+            'name_category' => 'required',
+        ]);
+        $categories->name_category= $data['name_category'];
+        $categories->updated_at = now();
+
+        $categories->save();
+        return redirect('/category/show');
     }
 
     /**
@@ -60,5 +89,9 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         //
+        Category::destroy($id);
+
+        //Retornar una respuesta json
+        return response()->json(array('res' => true));
     }
 }

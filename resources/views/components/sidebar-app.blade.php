@@ -56,7 +56,7 @@
          </li>
          {{-- li for categorias --}}
          <li>
-            <a href="#" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+            <a href="{{ route('category.show') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                <path d="M11.644 1.59a.75.75 0 01.712 0l9.75 5.25a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.712 0l-9.75-5.25a.75.75 0 010-1.32l9.75-5.25z" />
                <path d="M3.265 10.602l7.668 4.129a2.25 2.25 0 002.134 0l7.668-4.13 1.37.739a.75.75 0 010 1.32l-9.75 5.25a.75.75 0 01-.71 0l-9.75-5.25a.75.75 0 010-1.32l1.37-.738z" />
@@ -89,12 +89,9 @@
 </aside>
 
 {{-- Main page --}}
-<div class="p-4 sm:ml-64">
+<div class="p-4 sm:ml-64 text-white">
 
-   {{-- Yield for CitasShow --}}
-   @yield( 'contentCitasShow' )
-
-   {{-- Yield for ServiceShow --}}
-   @yield( 'contentShowService' )
+   {{-- Yield to see sidebar content--}}
+   @yield( 'content' )
 
 </div>
