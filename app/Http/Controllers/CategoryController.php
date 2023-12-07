@@ -63,7 +63,7 @@ class CategoryController extends Controller
     {
         //
         $category = Category::find($id_category);
-        return view('/Empleados/CategoryUpdate')->with(['category' => $category]);;
+        return view('/Empleados/CategoryUpdate')->with(['category' => $category]);
 
     }
 
