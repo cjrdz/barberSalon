@@ -87,11 +87,4 @@
       </ul>
    </div>
 </aside>
-
-{{-- Main page --}}
-<div class="p-4 sm:ml-64 text-white">
-
-   {{-- Yield to see sidebar content--}}
-   @yield( 'content' )
-
-</div>
+{{--  --}}
