@@ -14,7 +14,7 @@ class CategoryController extends Controller
     {
         //
         $category = Category::all();
-        return view('/Empleados/CategoryShow', compact('category'));
+        return view('/category/CategoryShow', compact('category'));
     }
 
     /**
@@ -24,7 +24,7 @@ class CategoryController extends Controller
     {
         //
         $category = Category::all();
-        return view('/Empleados/CategoryCreate')->with(['category' => $category]);;
+        return view('/category/CategoryCreate')->with(['category' => $category]);;
     
     }
 
@@ -63,7 +63,7 @@ class CategoryController extends Controller
     {
         //
         $category = Category::find($id_category);
-        return view('/Empleados/CategoryUpdate')->with(['category' => $category]);
+        return view('/category/CategoryUpdate')->with(['category' => $category]);
 
     }
 

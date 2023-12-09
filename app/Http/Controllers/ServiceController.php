@@ -28,7 +28,7 @@ class ServiceController extends Controller
         )->join("category", "category.id_category", "=", "service.fk_category")
         ->get();
 
-        return view('/Service/ServiceShow')->with(['service' => $service]);
+        return view('/service/ServiceShow')->with(['service' => $service]);
     }
 
     /**
