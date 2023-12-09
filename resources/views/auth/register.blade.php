@@ -44,12 +44,7 @@
                 {{ __('Already registered?') }}
             </a>
 
-            <a href="{{ route('login') }}" class="ms-3">
-                <x-primary-button type="button">
-                    {{ __('Log in') }}
-                </x-primary-button>
-            </a>
-
+            
             <x-primary-button class="ms-4">
                 {{ __('Register') }}
             </x-primary-button>
