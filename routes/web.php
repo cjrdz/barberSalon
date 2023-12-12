@@ -71,7 +71,7 @@ Route::post('/appointmentStore', [AppointmentController::class, 'store']);
 //Ruta para Modificar (FrontEnd)
 Route::get('/appointment/edit/{id_appointment}', [AppointmentController::class, 'edit'])->name('appointment.edit');
 //Ruta para Modificar BackEnd)
-Route::put('/appointment/update/{Appointments}', [AppointmentController::class, 'update'])->name('appointment.update'); 
+Route::put('/appointment/update/{appointments}', [AppointmentController::class, 'update'])->name('appointment.update'); 
 //Ruta para Eliminar (BackEnd)
 Route::delete('appointment/destroy/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy'); 
 
