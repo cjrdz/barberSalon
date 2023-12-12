@@ -60,5 +60,9 @@
                 >{{ __('Saved.') }}</p>
             @endif
         </div>
+        <div>
+            @yield('contentuser')
+        </div>
     </form>
 </section>
+

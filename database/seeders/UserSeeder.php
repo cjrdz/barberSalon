@@ -15,9 +15,9 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // Seed roles for users
-        $clientRoleId = DB::table('roles')->insertGetId(['name' => 'admin']);
+        $adminRoleId = DB::table('roles')->insertGetId(['name' => 'admin']);
         $employeeRoleId = DB::table('roles')->insertGetId(['name' => 'employee']);
-        $adminRoleId = DB::table('roles')->insertGetId(['name' => 'client']);
+        $clientRoleId = DB::table('roles')->insertGetId(['name' => 'client']);
 
         $data = [
             [
