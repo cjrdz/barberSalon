@@ -62,10 +62,18 @@ Route::put('/service/update/{services}', [ServiceController::class, 'update'])->
 Route::delete('service/destroy/{id}', [ServiceController::class, 'destroy'])->name('service.destroy'); 
 
 
-
-
-// Appointments views
+//--------------------Appointments views--------------------------
 Route::get('/appointment/show', [AppointmentController::class, 'index'] )->name('appointment.show');
+//Ruta para Crear (FrontEnd)
+Route::get('/appointment/create', [AppointmentController::class, 'create'])->name('appointment.create');
+//Ruta para Crear (BackEnd)
+Route::post('/appointmentStore', [AppointmentController::class, 'store']);
+//Ruta para Modificar (FrontEnd)
+Route::get('/appointment/edit/{id_appointment}', [AppointmentController::class, 'edit'])->name('appointment.edit');
+//Ruta para Modificar BackEnd)
+Route::put('/appointment/update/{Appointments}', [AppointmentController::class, 'update'])->name('appointment.update'); 
+//Ruta para Eliminar (BackEnd)
+Route::delete('appointment/destroy/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy'); 
 
 
 require __DIR__.'/auth.php';

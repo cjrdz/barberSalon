@@ -26,6 +26,9 @@
                         TimeFrame
                     </th>
                     <th scope="col" class="px-6 py-3 align-middle">
+                        Precio
+                    </th>
+                    <th scope="col" class="px-6 py-3 align-middle">
                         Category
                     </th>
                     <th scope="col" class="px-6 py-4 align-middle">
@@ -44,6 +47,9 @@
                     </td>
                     <td class="px-6 py-4">
                         {{$item->timeframe}}
+                    </td>
+                    <td class="px-6 py-4">
+                        $ {{$item->precio}}
                     </td>
                     <td class="px-6 py-4">
                         {{$item->category}}

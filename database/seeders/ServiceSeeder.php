@@ -19,12 +19,14 @@ class ServiceSeeder extends Seeder
             [
                 'name_service'=> 'Alisados Argan',
                 'timeframe'=> '2:00',
+                'precio'=>25,
                 'fk_category'=> 1,
                 'created_at' => Carbon::now()
             ],
             [
                 'name_service'=> 'Alisados Keratina',
                 'timeframe'=> '2:00',
+                'precio'=>25,
                 'fk_category'=> 1,
                 'created_at' => Carbon::now()
             ],

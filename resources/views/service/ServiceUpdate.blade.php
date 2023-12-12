@@ -29,6 +29,17 @@
                 </span>
             @enderror
         </div>
+        <label for="precio" class="col-md-4 col-form-label text-md-end">Precio</label> <br>
+
+        <div class="text-black">
+            <input id="precio" type="text"  @error('precio') is-invalid @enderror name="precio" value="{{$service->precio}}" required autocomplete="role">
+
+            @error('precio')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
 
             {{--updatwe fk_category --}}
         <label for="">Categoria</label> <br>

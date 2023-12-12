@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Status;
+use App\Models\Service;
+use App\Models\Appointment;
+use App\Models\User;
 use Illuminate\Http\Request;
+use NunoMaduro\Collision\Adapters\Phpunit\State;
 
 class AppointmentController extends Controller
 {
@@ -12,7 +17,30 @@ class AppointmentController extends Controller
     public function index()
     {
         // return view for appointment show
-        return view('appointment.show');
+        $appointment = Appointment::select(
+
+            "appointment.id_appointment",
+            "appointment.date",
+            "appointment.fk_user",
+            "appointment.fk_status",
+            "appointment.fk_service",
+
+            "users.id",
+            "users.name as user",
+
+            "status.id_status",
+            "status.name_status as status",
+
+            "service.id_service",
+            "service.name_service as service",
+
+        )
+        ->join("users", "users.id", "=", "appointment.fk_user")
+        ->join("status", "status.id_status", "=", "appointment.fk_status")
+        ->join("service", "service.id_service", "=", "appointment.fk_service")
+        ->get();
+
+        return view('/appointment/AppointmentShow')->with(['appointment' => $appointment]);
 
     }
 
@@ -22,6 +50,19 @@ class AppointmentController extends Controller
     public function create()
     {
         //
+        
+        $appointment = Appointment::all();
+        $users = User::all();
+        $status = Status::all();
+        $service = Service::all();
+        // $tarea = TareaModel::all();
+        return view('/appointment/AppointmentCreate')
+        ->with([
+        'appointment' => $appointment,
+        'users' => $users,
+        'status' => $status,
+        'service' => $service]);
+
     }
 
     /**

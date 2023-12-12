@@ -10,5 +10,5 @@ class Service extends Model
     use HasFactory;
     protected $table = 'service';
     protected $primaryKey = 'id_service';
-    protected $fillable = ['name_service', 'timeframe','fk_category'];
+    protected $fillable = ['name_service', 'timeframe','precio','fk_category'];
 }

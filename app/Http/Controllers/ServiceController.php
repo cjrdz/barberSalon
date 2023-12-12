@@ -14,12 +14,12 @@ class ServiceController extends Controller
     public function index()
     {
         // return view for service show
-        // return view('service.show');
         $service = Service::select(
 
             "service.id_service",
             "service.name_service",
             "service.timeframe",
+            "service.precio",
             "service.fk_category",
 
             "category.id_category", // category 
@@ -41,7 +41,7 @@ class ServiceController extends Controller
         $category = Category::all();
         $service = Service::all();
         // $tarea = TareaModel::all();
-        return view('/Service/ServiceCreate')
+        return view('/service/ServiceCreate')
         ->with(['service' => $service])
         ->with(['category' => $category]);
     }
@@ -56,6 +56,7 @@ class ServiceController extends Controller
          $data = request()->validate([
             'name_service'=> 'required',
             'timeframe' => 'required',
+            'precio' => 'required',
             'fk_category' => 'required'
         ]);//validacion
 
@@ -85,6 +86,7 @@ class ServiceController extends Controller
             "service.id_service",
             "service.name_service",
             "service.timeframe",
+            "service.precio",
             "service.fk_category",
     
             "category.id_category",
@@ -107,11 +109,13 @@ class ServiceController extends Controller
         $data = request()->validate([
             'name_service' => 'required',
             'timeframe' => 'required',
+            'precio' => 'required',
             'fk_category' => 'required',
         ]);
         // reemplazar datos
         $services->name_service= $data['name_service'];
         $services->timeframe= $data['timeframe'];
+        $services->precio= $data['precio'];
         $services->fk_category= $data['fk_category'];
 
         $services->updated_at = now();

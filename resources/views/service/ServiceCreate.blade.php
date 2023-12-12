@@ -29,6 +29,18 @@
             @enderror
         </div>
 
+<label for="">Precio</label> <br>
+        {{-- timeframe --}}
+        <div class="text-black">
+            <input id="precio" type="number" class="form-control" @error('precio') is-invalid @enderror name="precio"  required autocomplete="role">
+
+            @error('precio')
+                <span class="invalid-feedback" role="alert">
+                    <strong>{{ $message }}</strong>
+                </span>
+            @enderror
+        </div>
+
     {{-- fk_category --}}
 <label for="">Categoria</label> <br>
         <div class="text-black">
