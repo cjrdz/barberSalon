@@ -82,7 +82,7 @@ Route::get('/payment/show', [PaymentController::class, 'index'] )->name('payment
 //Ruta para Crear (FrontEnd)
 Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment.create');
 //Ruta para Crear (BackEnd)
-Route::post('/paymenttStore', [PaymentController::class, 'store']);
+Route::post('/paymentStore', [PaymentController::class, 'store']);
 //Ruta para Modificar (FrontEnd)
 Route::get('/payment/edit/{id_payment}', [PaymentController::class, 'edit'])->name('payment.edit');
 //Ruta para Modificar BackEnd)
