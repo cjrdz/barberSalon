@@ -38,7 +38,7 @@ class RegisteredUserController extends Controller
         ]);
 
         // Find the 'client' role
-        $clientRole = Role::firstOrCreate(['name' => 'client']);
+        $clientRole = Role::firstOrCreate(['role_name' => 'client']);
 
         // Create the user with the 'client' role
         $user = User::create([
@@ -46,6 +46,7 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'role_id' => $clientRole->id,
+            'role_name' => $clientRole->role_name
         ]);
         
         event(new Registered($user));
