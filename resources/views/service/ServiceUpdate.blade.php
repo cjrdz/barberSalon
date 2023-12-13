@@ -41,7 +41,7 @@
             @enderror
         </div>
 
-            {{--updatwe fk_category --}}
+            {{--update fk_category --}}
         <label for="">Categoria</label> <br>
         <div class="text-black">
             <select name="fk_category"class="text-black">
@@ -51,7 +51,7 @@
                 @endforeach
             {{-- </option> --}}
             </select>
-                @error('category')
+                @error('fk_category')
                 <span class="invalid-feedback d-block" role="alert">
                     <strong>{{$message}}</strong>
                 </span>

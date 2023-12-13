@@ -6,8 +6,9 @@
 <html>
     <body>
 
-        <a href="/appointment/create">
-            <button type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >+ Añadir Cita      </button>
+        <a href="/payment/create">
+            <button type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >
+                + Añadir Pago</button>
         </a>
     
         {{-- </button>  --}}
@@ -20,13 +21,13 @@
                             Código
                         </th>
                         <th scope="col" class="px-6 py-3 align-middle">
-                            Cita
+                            Costo
+                        </th>
+                        <th scope="col" class="px-6 py-3 align-middle">
+                            Metodo
                         </th>
                         <th scope="col" class="px-6 py-3 align-middle">
                             Usuario
-                        </th>
-                        <th scope="col" class="px-6 py-3 align-middle">
-                            Estado
                         </th>
                         <th scope="col" class="px-6 py-3 align-middle">
                             Servicio
@@ -37,19 +38,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($appointment as $item)
+                    @foreach ($payment as $item)
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            {{$item->id_appointment}}
+                            {{$item->id_payment}}
                         </td>
                         <td class="px-6 py-4">
-                            {{$item->date}}
+                            $ {{$item->cost}}
+                        </td>
+                        <td class="px-6 py-4">
+                            {{$item->paymentmethod}}
                         </td>
                         <td class="px-6 py-4">
                             {{$item->user}}
-                        </td>
-                        <td class="px-6 py-4">
-                            {{$item->status}}
                         </td>
                         <td class="px-6 py-4">
                             {{$item->service}}
@@ -57,7 +58,7 @@
                         <td class="px-6 py-2 text-right">
                             @if(Auth::user())
                             {{-- Botón para modificar --}}
-                            <a class="btn btn-primary btn-sm" href="/appointment/edit/{{$item->id_appointment}}">
+                            <a class="btn btn-primary btn-sm" href="/payment/edit/{{$item->id_payment}}">
                                 <button type="button" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
                                     Modificar
                                 </button>
@@ -65,7 +66,7 @@
                             @endif
                             {{-- Botón para eliminar --}}
                             <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-                            onclick="destroy(this)" token="{{csrf_token()}}" url="/appointment/destroy/{{$item->id_appointment}}">
+                            onclick="destroy(this)" token="{{csrf_token()}}" url="/payment/destroy/{{$item->id_payment}}">
                                 Eliminar
                             </button>
                         </td>

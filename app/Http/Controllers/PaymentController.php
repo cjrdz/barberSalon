@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Payment;
+use App\Models\Service;
 use Illuminate\Http\Request;
 
 class PaymentController extends Controller
@@ -12,6 +15,26 @@ class PaymentController extends Controller
     public function index()
     {
         //
+        $payment = Payment::select(
+
+            "payment.id_payment",
+            "payment.cost",
+            "payment.paymentmethod",
+            "payment.fk_service",
+            "payment.fk_user",
+
+            "users.id",
+            "users.name as user",
+
+            "service.id_service",
+            "service.name_service as service",
+
+        )
+        ->join("users", "users.id", "=", "payment.fk_user")
+        ->join("service", "service.id_service", "=", "payment.fk_service")
+        ->get();
+
+        return view('/payment/PaymentShow')->with(['payment' => $payment]);
     }
 
     /**
@@ -20,6 +43,15 @@ class PaymentController extends Controller
     public function create()
     {
         //
+        $payment = Payment::all();
+        $users = User::all();
+        $service = Service::all();
+
+        return view('/payment/PaymentCreate')
+        ->with([
+        'payment' => $payment,
+        'users' => $users,
+        'service' => $service]);
     }
 
     /**
@@ -28,6 +60,18 @@ class PaymentController extends Controller
     public function store(Request $request)
     {
         //
+        $data = request()->validate([
+            'cost'=> 'required',
+            'paymentmethod' => 'required',
+            'fk_service' => 'required',
+            'fk_user' => 'required',
+
+        ]);
+
+        //save info
+        Payment::create($data);
+
+        return redirect('/payment/show');
     }
 
     /**
@@ -41,17 +85,51 @@ class PaymentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit($id_payment)
     {
         //
+        $payment = Payment::select(
+            "payment.id_payment",
+            "payment.cost",
+            "payment.paymentmethod",
+            "payment.fk_user",
+            "payment.fk_service"
+        )
+        ->join("users", "users.id", "=", "payment.fk_user")
+        ->join("service", "service.id_service", "=", "payment.fk_service")
+        ->find($id_payment);
+
+        $users = User::all();
+        $service = Service::all();
+
+        return view('/payment/PaymentUpdate')->with([
+            'payment' => $payment, 
+            'users' => $users,
+            'service' => $service]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Payment $payments)
     {
         //
+        $data = request()->validate([
+            'cost'=> 'required',
+            'paymentmethod' => 'required',
+            'fk_service' => 'required',
+            'fk_user' => 'required',
+
+        ]);
+        $payments->cost=$data['cost'];
+        $payments->paymentmethod=$data['paymentmethod'];
+        $payments->fk_user=$data['fk_user'];
+        $payments->fk_service=$data['fk_service'];
+        
+        $payments->updated_at = now();
+        $payments->save();
+
+        return redirect('/payment/show');
     }
 
     /**
@@ -60,5 +138,7 @@ class PaymentController extends Controller
     public function destroy(string $id)
     {
         //
+        Payment::destroy($id);
+        return response()->json(array('res' => true));
     }
 }

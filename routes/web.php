@@ -1,7 +1,9 @@
 <?php
 
+use App\Models\Payment;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
@@ -71,9 +73,22 @@ Route::post('/appointmentStore', [AppointmentController::class, 'store']);
 //Ruta para Modificar (FrontEnd)
 Route::get('/appointment/edit/{id_appointment}', [AppointmentController::class, 'edit'])->name('appointment.edit');
 //Ruta para Modificar BackEnd)
-Route::put('/appointment/update/{Appointments}', [AppointmentController::class, 'update'])->name('appointment.update'); 
+Route::put('/appointment/update/{appointments}', [AppointmentController::class, 'update'])->name('appointment.update'); 
 //Ruta para Eliminar (BackEnd)
 Route::delete('appointment/destroy/{id}', [AppointmentController::class, 'destroy'])->name('appointment.destroy'); 
+
+//--------------------Payment views--------------------------
+Route::get('/payment/show', [PaymentController::class, 'index'] )->name('payment.show');
+//Ruta para Crear (FrontEnd)
+Route::get('/payment/create', [PaymentController::class, 'create'])->name('payment.create');
+//Ruta para Crear (BackEnd)
+Route::post('/paymentStore', [PaymentController::class, 'store']);
+//Ruta para Modificar (FrontEnd)
+Route::get('/payment/edit/{id_payment}', [PaymentController::class, 'edit'])->name('payment.edit');
+//Ruta para Modificar BackEnd)
+Route::put('/payment/update/{payments}', [PaymentController::class, 'update'])->name('payment.update'); 
+//Ruta para Eliminar (BackEnd)
+Route::delete('payment/destroy/{id}', [PaymentController::class, 'destroy'])->name('payment.destroy'); 
 
 
 require __DIR__.'/auth.php';

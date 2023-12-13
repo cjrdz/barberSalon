@@ -13,17 +13,21 @@ return new class extends Migration
     {
         Schema::create('payment', function (Blueprint $table) {
             
-            $table->id('id_pyment');
+            $table->id('id_payment');
             $table->double('cost');
             $table->string('paymentmethod', 20);
             $table->bigInteger('fk_service')->unsigned();
             $table->bigInteger('fk_user')->unsigned();
 
             $table->foreign('fk_user')
-            ->references('id')->on('users');
+            ->references('id')->on('users')
+            ->onDelete('cascade')
+             ->onUpdate('cascade');;
 
             $table->foreign('fk_service')
-            ->references('id_service')->on('service');
+            ->references('id_service')->on('service')
+            ->onDelete('cascade')
+             ->onUpdate('cascade');;
 
             $table->timestamps();
         });
