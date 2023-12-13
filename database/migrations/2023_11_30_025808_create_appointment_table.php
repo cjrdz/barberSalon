@@ -20,13 +20,19 @@ return new class extends Migration
             $table->bigInteger('fk_service')->unsigned();
             
             $table->foreign('fk_user')
-            ->references('id')->on('users');
+            ->references('id')->on('users')
+            ->onDelete('cascade')
+             ->onUpdate('cascade');;
 
             $table->foreign('fk_status')
-            ->references('id_status')->on('status');
+            ->references('id_status')->on('status')
+            ->onDelete('cascade')
+             ->onUpdate('cascade');;
 
             $table->foreign('fk_service')
-            ->references('id_service')->on('service');
+            ->references('id_service')->on('service')
+            ->onDelete('cascade')
+             ->onUpdate('cascade');;
             
             $table->timestamps();
         });

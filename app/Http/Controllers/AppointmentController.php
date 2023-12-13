@@ -84,7 +84,7 @@ class AppointmentController extends Controller
         //save info
         Appointment::create($data);
 
-        return redirect('/appointment/show')
+        return redirect('/appointment/show');
     }
 
     /**
@@ -105,8 +105,8 @@ class AppointmentController extends Controller
             "appointment.id_appointment",
             "appointment.date",
             "appointment.time",
-            "appointment.fk_user"
-            "appointment.fk_status"
+            "appointment.fk_user",
+            "appointment.fk_status",
             "appointment.fk_service"
         )
         ->join("users", "users.id", "=", "appointment.fk_user")
@@ -149,7 +149,7 @@ class AppointmentController extends Controller
         $appointments->updated_at = now();
         $appointments->save();
 
-        return redirect('/appointment/show')
+        return redirect('/appointment/show');
         
     }
 

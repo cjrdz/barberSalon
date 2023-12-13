@@ -57,14 +57,15 @@
                         <td class="px-6 py-2 text-right">
                             @if(Auth::user())
                             {{-- Botón para modificar --}}
-                            <a class="btn btn-primary btn-sm" href="/service/edit/{{$item->id_service}}">
+                            <a class="btn btn-primary btn-sm" href="/appointment/edit/{{$item->id_appointment}}">
                                 <button type="button" class="focus:outline-none text-white bg-purple-700 hover:bg-purple-800 focus:ring-4 focus:ring-purple-300 font-medium rounded-lg text-sm px-5 py-2.5 mb-2 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-900">
                                     Modificar
                                 </button>
                             </a>
                             @endif
                             {{-- Botón para eliminar --}}
-                            <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900" onclick="destroy(this)" token="{{csrf_token()}}" data-url="/service/destroy/{{$item->id_service}}">
+                            <button class="focus:outline-none text-white bg-red-700 hover:bg-red-800 focus:ring-4 focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                            onclick="destroy(this)" token="{{csrf_token()}}" url="/appointment/destroy/{{$item->id_appointment}}">
                                 Eliminar
                             </button>
                         </td>

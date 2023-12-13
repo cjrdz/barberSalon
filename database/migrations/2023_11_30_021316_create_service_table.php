@@ -17,7 +17,9 @@ return new class extends Migration
             $table->string('timeframe',5);
             $table->double('precio');
             $table->bigInteger('fk_category')->unsigned();
-            $table->foreign('fk_category')->references('id_category')->on('category');
+            $table->foreign('fk_category')->references('id_category')->on('category')
+            ->onDelete('cascade')
+             ->onUpdate('cascade');;
             $table->timestamps();
         });
     }
