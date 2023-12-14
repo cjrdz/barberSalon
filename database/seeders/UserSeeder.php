@@ -18,16 +18,16 @@ class UserSeeder extends Seeder
         $this->call(RoleSeeder::class);
         
         // Seed roles for users
-        $adminRoleId = DB::table('roles')->where('role_name', 'admin')->value('id');
-        $employeeRoleId = DB::table('roles')->where('role_name', 'employee')->value('id');
-        $clientRoleId = DB::table('roles')->where('role_name', 'client')->value('id');
+        $adminRoleId = DB::table('roles')->where('role_name', 'admin')->value('role_id');
+        $employeeRoleId = DB::table('roles')->where('role_name', 'employee')->value('role_id');
+        $clientRoleId = DB::table('roles')->where('role_name', 'client')->value('role_id');
 
         $data = [
             [
                 'name' => 'estefany',
                 'email' => 'estefany@gmail.com',
                 'password' => bcrypt('123456'),
-                'role_id' => $adminRoleId,
+                'fk_role' => $adminRoleId,
                 'role_name' => 'admin',
                 'created_at' => Carbon::now(),
             ],
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
                 'name' => 'employee_user',
                 'email' => 'employee@gmail.com',
                 'password' => bcrypt('123456'),
-                'role_id' => $employeeRoleId,
+                'fk_role' => $employeeRoleId,
                 'role_name' => 'employee',
                 'created_at' => Carbon::now(),
             ],
@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
                 'name' => 'client_user',
                 'email' => 'client@gmail.com',
                 'password' => bcrypt('123456'),
-                'role_id' => $clientRoleId,
+                'fk_role' => $clientRoleId,
                 'role_name' => 'client',
                 'created_at' => Carbon::now(),
             ],

@@ -38,7 +38,7 @@
                 <select name="fk_user"class="text-black">
                   
                     @foreach ($users as $item)
-                        <option value="{{$item->id}}" {{ $item->id == $appointment->fk_user ? 'selected' : '' }}>{{$item->name}}</option>
+                        <option value="{{$item->user_id}}" {{ $item->user_id == $appointment->fk_user ? 'selected' : '' }}>{{$item->name}}</option>
                     @endforeach
                 {{-- </option> --}}
                 </select>
