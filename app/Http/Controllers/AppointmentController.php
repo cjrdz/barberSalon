@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Status;
 use App\Models\Service;
 use App\Models\Appointment;
-use App\Models\User;
 use Illuminate\Http\Request;
 use NunoMaduro\Collision\Adapters\Phpunit\State;
 
@@ -26,7 +26,7 @@ class AppointmentController extends Controller
             "appointment.fk_status",
             "appointment.fk_service",
 
-            "users.id",
+            "users.user_id",
             "users.name as user",
 
             "status.id_status",
@@ -36,7 +36,7 @@ class AppointmentController extends Controller
             "service.name_service as service",
 
         )
-        ->join("users", "users.id", "=", "appointment.fk_user")
+        ->join("users", "users.user_id", "=", "appointment.fk_user")
         ->join("status", "status.id_status", "=", "appointment.fk_status")
         ->join("service", "service.id_service", "=", "appointment.fk_service")
         ->get();
@@ -109,7 +109,7 @@ class AppointmentController extends Controller
             "appointment.fk_status",
             "appointment.fk_service"
         )
-        ->join("users", "users.id", "=", "appointment.fk_user")
+        ->join("users", "users.user_id", "=", "appointment.fk_user")
         ->join("status", "status.id_status", "=", "appointment.fk_status")
         ->join("service", "service.id_service", "=", "appointment.fk_service")
         ->find($id_appointment);

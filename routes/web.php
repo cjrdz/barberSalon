@@ -3,6 +3,7 @@
 use App\Models\Payment;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
@@ -90,5 +91,17 @@ Route::put('/payment/update/{payments}', [PaymentController::class, 'update'])->
 //Ruta para Eliminar (BackEnd)
 Route::delete('payment/destroy/{id}', [PaymentController::class, 'destroy'])->name('payment.destroy'); 
 
+//--------------------Users views--------------------------
+Route::get('/user/show/', [UserController::class, 'index'] )->name('user.show');
+// Route create front-end controller
+Route::get('/user/create', [UserController::class,'create'])->name('user.create');
+// Route create back-end controller
+Route::post('/userStore', [UserController::class,'store']);
+// Route editing front-end controller
+Route::get('/user/edit/{user_id}', [UserController::class,'edit'])->name('user.edit');
+// Route update back-end controller
+Route::put('/user/update/{users}', [UserController::class,'update'])->name('user.update');
+// Route delete back-end controller
+Route::delete('/user/destroy/{id}', [UserController::class,'destroy'])->name('user.destroy');
 
 require __DIR__.'/auth.php';

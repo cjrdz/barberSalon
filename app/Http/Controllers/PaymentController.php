@@ -23,14 +23,14 @@ class PaymentController extends Controller
             "payment.fk_service",
             "payment.fk_user",
 
-            "users.id",
+            "users.user_id",
             "users.name as user",
 
             "service.id_service",
             "service.name_service as service",
 
         )
-        ->join("users", "users.id", "=", "payment.fk_user")
+        ->join("users", "users.user_id", "=", "payment.fk_user")
         ->join("service", "service.id_service", "=", "payment.fk_service")
         ->get();
 
@@ -95,7 +95,7 @@ class PaymentController extends Controller
             "payment.fk_user",
             "payment.fk_service"
         )
-        ->join("users", "users.id", "=", "payment.fk_user")
+        ->join("users", "users.user_id", "=", "payment.fk_user")
         ->join("service", "service.id_service", "=", "payment.fk_service")
         ->find($id_payment);
 

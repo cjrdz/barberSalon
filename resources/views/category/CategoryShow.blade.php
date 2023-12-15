@@ -37,7 +37,7 @@
             <td class="px-6 py-4 ">
                 {{$item->name_category}}
             </td>            
-            <td class="px-6 py-3 text-right">
+            <td class="px-6 py-3 text-middle">
                 @if(Auth::user())
                 {{-- boton para modificar --}}
                 <a class="btn btn-primary btn-sm" href="/category/edit/{{$item->id_category}}">

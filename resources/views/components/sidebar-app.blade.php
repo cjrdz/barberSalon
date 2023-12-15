@@ -24,7 +24,7 @@
             </a>
          </li>
 {{----------------view for Admin----------------}}
-@if(Auth::user()->role_id===1) 
+@if(Auth::user()->fk_role===1) 
 
 
    {{-- li for categorias --}}
@@ -84,7 +84,7 @@
 @endif
 
 {{----------------view for Employee----------------}}
-@if(Auth::user()->role_id===2) 
+@if(Auth::user()->fk_role===2) 
       {{-- href for show in appointment --}}
       <a href="{{ route('appointment.show') }}" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
@@ -97,7 +97,7 @@
 @endif
 
 {{----------------view for Client----------------}}
-@if(Auth::user()->role_id===3) 
+@if(Auth::user()->fk_role===3) 
 
    {{-- li for service --}}
    <li>

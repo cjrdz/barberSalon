@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -20,7 +20,7 @@ return new class extends Migration
             $table->bigInteger('fk_service')->unsigned();
             
             $table->foreign('fk_user')
-            ->references('id')->on('users')
+            ->references('user_id')->on('users')
             ->onDelete('cascade')
              ->onUpdate('cascade');;
 

@@ -35,7 +35,7 @@
             <select name="fk_user"class="text-black">
                 <option>
                 @foreach ($users as $item)
-                    <option value="{{$item->id}}">{{$item->name}}</option>
+                    <option value="{{$item->user_id}}">{{$item->name}}</option>
                 @endforeach
             </option>
             </select>
