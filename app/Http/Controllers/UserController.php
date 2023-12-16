@@ -17,7 +17,7 @@ class UserController extends Controller
             "users.user_id",
             "users.name",
             "users.email",
-            "roles.fk_role",
+            "users.fk_role",
             
             "roles.role_id",
             "roles.role_name as role",
@@ -54,7 +54,10 @@ class UserController extends Controller
             'email'=> 'required',
             'fk_role'=> 'required',
         ]);
-            
+        
+        // Set a default temporary password
+        $data['password'] = bcrypt('FirstPassword2023');
+        
         // save data
         User::create($data);
             
@@ -75,22 +78,22 @@ class UserController extends Controller
     public function edit($user_id)
     {
         //
-        $users = User::select(
+        $user = User::select(
             "users.user_id",
             "users.name",
             "users.email",
-            "roles.fk_role",
+            "users.fk_role",
             
         )
         ->join("roles", "roles.role_id", "=", "users.fk_role")
         ->find($user_id);
         
-        $users = User::all();
+        // $user = User::all();
         $roles = Role::all();
 
         return view('/user/UserUpdate')
         ->with([
-            'user' => $users,
+            'user' => $user,
             'roles' => $roles
         ]);
     }
