@@ -9,6 +9,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\AppointmentController;
+use App\Http\Controllers\ViewClientController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,25 @@ Route::get('/category/edit/{id_category}', [CategoryController::class, 'edit'])-
 Route::put('/category/update/{categories}', [CategoryController::class, 'update'])->name('category.update'); 
 //Ruta para Eliminar (BackEnd)
 Route::delete('category/destroy/{id}', [CategoryController::class, 'destroy'])->name('category.destroy'); 
+
+
+
+// view to client 
+// show category
+Route::get('client/category/show', [ViewClientController::class, 'viewClient'] )->name('client.category.show');
+// show service by category
+Route::get('client/service/search/{id_category}', [ViewClientController::class, 'search'])->name('client.service.search');
+// show service
+
+
+// Route::get('/service/showsearch/{services}', [ViewClientController::class, 'showsearch'])->name('service.showsearch');
+
+
+
+
+
+
+
 
 
 // -----------------Services views--------------------------

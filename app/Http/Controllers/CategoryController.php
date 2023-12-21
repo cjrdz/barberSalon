@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Service;
 use App\Models\Category;
 use Illuminate\Http\Request;
 
@@ -94,4 +95,5 @@ class CategoryController extends Controller
         //Retornar una respuesta json
         return response()->json(array('res' => true));
     }
+
 }
