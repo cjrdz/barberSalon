@@ -38,7 +38,7 @@ class ViewClientController extends Controller
     //     $services->name_service= $data['name_service'];
     //     $services->timeframe= $data['timeframe'];
     //     $services->precio= $data['precio'];
-    //     $services->fk_category= $data['fk_category'];
+    //     $services->fk_category=g $data['fk_category'];
 
     // }
 }
