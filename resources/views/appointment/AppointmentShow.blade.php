@@ -5,11 +5,11 @@
 <!DOCTYPE html>
 <html>
     <body>
-
-
-        <label for="">CITAS</label>
+        <p class=" text-4xl text-gray-900 dark:text-white text-center"><b>Citas</b></p>
         <a href="/appointment/create">
-            <button type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >+ Añadir Cita      </button>
+            <button type="button" class="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2" >
+                + Añadir Cita
+            </button>
         </a>
     
         {{-- </button>  --}}
@@ -56,7 +56,7 @@
                         <td class="px-6 py-4">
                             {{$item->service}}
                         </td>
-                        <td class="px-6 py-2 text-right">
+                        <td class="px-6 py-2 text-middle">
                             @if(Auth::user())
                             {{-- Botón para modificar --}}
                             <a class="btn btn-primary btn-sm" href="/appointment/edit/{{$item->id_appointment}}">
