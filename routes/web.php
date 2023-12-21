@@ -112,7 +112,7 @@ Route::put('/payment/update/{payments}', [PaymentController::class, 'update'])->
 Route::delete('payment/destroy/{id}', [PaymentController::class, 'destroy'])->name('payment.destroy'); 
 
 //--------------------Users views--------------------------
-Route::get('/user/show/', [UserController::class, 'index'] )->name('user.show');
+Route::get('/user/show', [UserController::class, 'index'] )->name('user.show');
 // Route create front-end controller
 Route::get('/user/create', [UserController::class,'create'])->name('user.create');
 // Route create back-end controller
@@ -122,6 +122,6 @@ Route::get('/user/edit/{user_id}', [UserController::class,'edit'])->name('user.e
 // Route update back-end controller
 Route::put('/user/update/{users}', [UserController::class,'update'])->name('user.update');
 // Route delete back-end controller
-Route::delete('/user/destroy/{id}', [UserController::class,'destroy'])->name('user.destroy');
+Route::delete('user/destroy/{id}', [UserController::class,'destroy'])->name('user.destroy');
 
 require __DIR__.'/auth.php';
