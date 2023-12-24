@@ -50,7 +50,7 @@
             </td>            
             <td class="px-6 py-4 ">
                 <img class="w-full" src="{{asset($item->img)}}" alt="alisado">
-            </td>            
+            </td>           
             <td class="px-6 py-4 ">
                 {{$item->description}}
             </td>            
