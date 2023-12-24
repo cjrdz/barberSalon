@@ -41,4 +41,25 @@ class ViewClientController extends Controller
     //     $services->fk_category=g $data['fk_category'];
 
     // }
+    public function index()
+    {
+        // return view for service show
+        $service = Service::select(
+
+            "service.id_service",
+            "service.name_service",
+            "service.timeframe",
+            "service.img",
+            "service.description",
+            "service.precio",
+            "service.fk_category",
+
+            "category.id_category", // category 
+            "category.name_category as category", //category - name category
+            
+        )->join("category", "category.id_category", "=", "service.fk_category")
+        ->get();
+
+        return view('/service/ServiceShowAll')->with(['service' => $service]);
+    }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<form method="POST" action="/service/update/{{$service->id_service}}" class="mx-auto max-w-md">
+<form method="POST" action="/service/update/{{$service->id_service}}" class="mx-auto max-w-md" enctype="multipart/form-data">
     @csrf
     @method('PUT')
 
@@ -26,6 +26,33 @@
         <input id="timeframe" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="TimeFrame" @error('timeframe') is-invalid @enderror name="timeframe" value="{{$service->timeframe}}" required autocomplete="timeframe">
 
         @error('timeframe')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
+    
+    <div class="mx-auto max-w-md">
+        <label for="img" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Imagen Categoría</label>
+        <input id="img" type="file" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" 
+        placeholder="Imagen de la Categoria" accept="image/*"
+        @error('img') is-invalid @enderror name="img" value="{{$service->img}}" >
+
+        @error('img')
+            <span class="invalid-feedback" role="alert">
+                <strong>{{ $message }}</strong>
+            </span>
+        @enderror
+    </div>
+
+    
+    <div class="mx-auto max-w-md">
+        <label for="description" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Descripcion de la Categoría</label>
+        <input id="description" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Description de la Categoría" @error('description') 
+        is-invalid @enderror name="description" value="{{$service->description}}" required>
+
+        @error('description')
             <span class="invalid-feedback" role="alert">
                 <strong>{{ $message }}</strong>
             </span>

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
 use App\Models\Service;
+use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ServiceController extends Controller
 {
@@ -19,6 +20,8 @@ class ServiceController extends Controller
             "service.id_service",
             "service.name_service",
             "service.timeframe",
+            "service.img",
+            "service.description",
             "service.precio",
             "service.fk_category",
 
@@ -37,10 +40,9 @@ class ServiceController extends Controller
     public function create()
     {
         //
-        // show viwe to create new service
+        // show view to create new service
         $category = Category::all();
         $service = Service::all();
-        // $tarea = TareaModel::all();
         return view('/service/ServiceCreate')
         ->with(['service' => $service])
         ->with(['category' => $category]);
@@ -52,17 +54,37 @@ class ServiceController extends Controller
     public function store(Request $request)
     {
         //
-         //Almacenar info de cliente
          $data = request()->validate([
             'name_service'=> 'required',
             'timeframe' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'description'=>'required',
             'precio' => 'required',
             'fk_category' => 'required'
         ]);//validacion
 
         //guardar info
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
 
-        Service::create($data);
+            // Guardar la imagen en el almacenamiento
+            $path = $image->storeAs('public/images', $imageName);
+
+            // Obtener la ruta de la imagen para guardarla en la base de datos
+            $imageUrl = Storage::url($path);
+
+            // Crear el registro en la base de datos con la ruta de la imagen
+            Service::create([
+                'name_service'=> $data['name_service'],
+                'timeframe'=> $data['timeframe'],
+                'img' => $imageUrl,
+                'description' => $data['description'],
+                'precio'=> $data['precio'],
+                'fk_category'=> $data['fk_category']
+            ]);
+        }
+
 
         //Redireccionar
         return redirect('/service/show');
@@ -86,6 +108,8 @@ class ServiceController extends Controller
             "service.id_service",
             "service.name_service",
             "service.timeframe",
+            "service.img",
+            "service.description",
             "service.precio",
             "service.fk_category",
     
@@ -109,18 +133,42 @@ class ServiceController extends Controller
         $data = request()->validate([
             'name_service' => 'required',
             'timeframe' => 'required',
+            'img' => '|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'description'=>'required',
             'precio' => 'required',
             'fk_category' => 'required',
         ]);
-        // reemplazar datos
-        $services->name_service= $data['name_service'];
-        $services->timeframe= $data['timeframe'];
-        $services->precio= $data['precio'];
-        $services->fk_category= $data['fk_category'];
 
-        $services->updated_at = now();
+        if($request->hasFile('img')){
+            $image =$request->file('img');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+            // Guardar la nueva imagen en el almacenamiento y obtener su ruta
+            $path = $image->storeAs('public/images', $imageName);
+            $imageUrl = Storage::url($path);
 
-        $services->save();
+            // Eliminar la imagen anterior si existe
+            Storage::delete($services->img); // Elimina la imagen antigua
+
+            $services->update([
+                'name_service'=> $data['name_service'],
+                'timeframe'=> $data['timeframe'],
+                'img' => $imageUrl,
+                'description' => $data['description'],
+                'precio'=> $data['precio'],
+                'fk_category'=> $data['fk_category']
+            ]);
+
+        }else{
+             // Si no se proporcionó una nueva imagen, actualizar otros datos solamente
+             $services->update([
+                'name_service'=> $data['name_service'],
+                'timeframe'=> $data['timeframe'],
+                'description' => $data['description'],
+                'precio'=> $data['precio'],
+                'fk_category'=> $data['fk_category']
+            ]);
+        }
+
         return redirect('/service/show');
     }
 

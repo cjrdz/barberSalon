@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Service;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CategoryController extends Controller
 {
@@ -38,11 +39,28 @@ class CategoryController extends Controller
         $data = request()->validate([
 
             'name_category' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif, webp|max:2048',
+            'description'=>'required'
 
         ]);
 
-        //Insertar la informacion
-        Category::create($data);
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
+
+            // Guardar la imagen en el almacenamiento 
+            $path = $image->storeAs('public/images', $imageName);
+
+            // Obtener la ruta de la imagen para guardarla en la base de datos
+            $imageUrl = Storage::url($path);
+
+            // Crear el registro en la base de datos con la ruta de la imagen
+            Category::create([
+                'name_category' => $data['name_category'],
+                'img' => $imageUrl,
+                'description' => $data['description']
+            ]);
+        }
 
         //Redireccionar
         return redirect('/category/show');
@@ -76,11 +94,36 @@ class CategoryController extends Controller
         //
         $data = request()->validate([
             'name_category' => 'required',
+            'img' => '|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
+            'description'=>'required'
         ]);
-        $categories->name_category= $data['name_category'];
-        $categories->updated_at = now();
+        
+        if ($request->hasFile('img')) {
+            $image = $request->file('img');
+            $imageName = time().'.'.$image->getClientOriginalExtension();
 
-        $categories->save();
+            // Guardar la nueva imagen en el almacenamiento y obtener su ruta
+            $path = $image->storeAs('public/images', $imageName);
+            $imageUrl = Storage::url($path);
+
+            // Eliminar la imagen anterior si existe
+            Storage::delete($categories->img); // Elimina la imagen antigua
+
+            // Actualizar los datos, incluida la nueva ruta de la imagen
+            $categories->update([
+                'name_category' => $data['name_category'],
+                'img' => $imageUrl,
+                'description' => $data['description']
+            ]);
+        } 
+        else {
+            // Si no se proporcionó una nueva imagen, actualizar otros datos solamente
+            $categories->update([
+                'name_category' => $data['name_category'],
+                'description' => $data['description']
+            ]);
+        }
+
         return redirect('/category/show');
     }
 

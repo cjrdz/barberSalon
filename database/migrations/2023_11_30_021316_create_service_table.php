@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id('id_service');
             $table->string('name_service',50);
             $table->string('timeframe',5);
+            $table->string('img');
+            $table->string('description');
             $table->double('precio');
             $table->bigInteger('fk_category')->unsigned();
             $table->foreign('fk_category')->references('id_category')->on('category')

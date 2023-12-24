@@ -21,6 +21,15 @@
                     Category
                 </td>    
                 <td scope="col" class="px-6 py-3 align-middle">
+                    PATH
+                </td>    
+                <td scope="col" class="px-6 py-3 align-middle">
+                    Imagen
+                </td>    
+                <td scope="col" class="px-6 py-3 align-middle">
+                    Descripcion
+                </td>    
+                <td scope="col" class="px-6 py-3 align-middle">
                     Acciones
                 </td>
             </tr>
@@ -35,6 +44,15 @@
             </td>
             <td class="px-6 py-4 ">
                 {{$item->name_category}}
+            </td>            
+            <td class="px-6 py-4 ">
+                {{$item->img}}
+            </td>            
+            <td class="px-6 py-4 ">
+                <img class="w-full" src="{{asset($item->img)}}" alt="alisado">
+            </td>            
+            <td class="px-6 py-4 ">
+                {{$item->description}}
             </td>            
             <td class="px-6 py-3 text-middle">
                 @if(Auth::user())

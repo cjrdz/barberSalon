@@ -9,7 +9,7 @@
       <div class="max-w-sm rounded bg-black overflow-hidden shadow-lg ">
         <a href="{{ route('client.service.search', ['id_category' => $item->id_category]) }}">
 
-        <img class="w-full" src="/img/alisado.jpg" alt="alisado">
+        <img class="w-full" src="{{asset($item->img)}}" alt="alisado">
         <div class="px-6 py-4">
           <div class="font-bold text-xl mb-2">
             <label for="">
@@ -17,7 +17,7 @@
             </label>
           </div>
             <p class="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet consectetur
+                <label for="">{{$item->description}}</label>
             </p> 
           </a>
         </div>

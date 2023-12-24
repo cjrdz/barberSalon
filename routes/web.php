@@ -58,7 +58,8 @@ Route::delete('category/destroy/{id}', [CategoryController::class, 'destroy'])->
 Route::get('client/category/show', [ViewClientController::class, 'viewClient'] )->name('client.category.show');
 // show service by category
 Route::get('client/service/search/{id_category}', [ViewClientController::class, 'search'])->name('client.service.search');
-// show service
+// show service all
+Route::get('client/service/all/', [ViewClientController::class, 'index'])->name('client.service.all');
 
 
 // Route::get('/service/showsearch/{services}', [ViewClientController::class, 'showsearch'])->name('service.showsearch');
