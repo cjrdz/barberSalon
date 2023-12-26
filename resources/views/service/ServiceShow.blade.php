@@ -26,10 +26,7 @@
                     </th>
                     <th scope="col" class="px-6 py-3 align-middle">
                         TimeFrame
-                    </th>
-                    <td scope="col" class="px-6 py-3 align-middle">
-                        PATH
-                    </td>    
+                    </th> 
                     <td scope="col" class="px-6 py-3 align-middle">
                         Imagen
                     </td>    
@@ -59,11 +56,9 @@
                     <td class="px-6 py-4">
                         {{$item->timeframe}}
                     </td>
-                    <td class="px-6 py-4 ">
-                        {{$item->img}}
-                    </td>            
-                    <td class="px-6 py-4 ">
-                        <img class="w-full" src="{{asset($item->img)}}" alt="alisado">
+           
+                    <td class="px-6 py-3 ">
+                        <img height="60px" width="80px" src="{{asset($item->img)}}" alt="{{asset($item->name_service)}}">
                     </td>            
                     <td class="px-6 py-4 ">
                         {{$item->description}}

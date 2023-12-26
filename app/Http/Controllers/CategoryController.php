@@ -39,7 +39,7 @@ class CategoryController extends Controller
         $data = request()->validate([
 
             'name_category' => 'required',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif, webp|max:2048',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
             'description'=>'required'
 
         ]);
