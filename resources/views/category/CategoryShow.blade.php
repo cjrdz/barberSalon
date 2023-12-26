@@ -19,10 +19,7 @@
                 </td>
                 <td scope="col" class="px-6 py-3 align-middle">
                     Category
-                </td>    
-                <td scope="col" class="px-6 py-3 align-middle">
-                    PATH
-                </td>    
+                </td>        
                 <td scope="col" class="px-6 py-3 align-middle">
                     Imagen
                 </td>    
@@ -44,13 +41,18 @@
             </td>
             <td class="px-6 py-4 ">
                 {{$item->name_category}}
-            </td>            
+            </td>                       
             <td class="px-6 py-4 ">
+<<<<<<< HEAD
                 {{$item->img}}
             </td>            
             <td class="px-6 py-4 ">
                 <img class="w-full" src="{{asset($item->img)}}" alt="alisado">
             </td>           
+=======
+                <img height="60px" width="80px" src="{{asset($item->img)}}" alt="{{asset($item->name_category)}}">
+            </td>            
+>>>>>>> a43ec76d1331dacc989eff3cf321cdda99662f0c
             <td class="px-6 py-4 ">
                 {{$item->description}}
             </td>            

@@ -3,7 +3,7 @@
 @section('content')
 
 <label for="">Servicio</label> <br>
-<div class="grid grid-cols-3 gap-x-6 gap-y-6 overflow-hidden shadow-lg px-6 py-4 ">
+<div class="grid grid-cols-4 gap-x-6 gap-y-6 overflow-hidden shadow-lg px-6 py-5 ">
 
     @foreach($service as $item)
     <div class="max-w-sm rounded bg-black overflow-hidden shadow-lg ">
