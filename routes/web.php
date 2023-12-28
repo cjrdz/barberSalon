@@ -1,13 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\AppointmentController;
 use App\Http\Controllers\ViewClientController;
+use App\Http\Controllers\AppointmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -120,6 +121,10 @@ Route::middleware('auth', 'client')->group(function(){
     Route::get('client/service/search/{id_category}', [ViewClientController::class, 'search'])->name('client.service.search');
     // show service all
     Route::get('client/service/all/', [ViewClientController::class, 'index'])->name('client.service.all');
+
+//--------------------views to Shopping Cart--------------------------
+    // show shopping cart
+    Route::get('/cart/show', [CartController::class, 'index'] )->name('cart.show');
 
 });
 
