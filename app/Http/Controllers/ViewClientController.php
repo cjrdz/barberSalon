@@ -13,9 +13,10 @@ class ViewClientController extends Controller
     public function viewClient(){
 
         $category = Category::all();
-        return view('/category/ClientCategoryShow')->with(['category'=>$category]);;
+        return view('/category/ClientCategoryShow')->with(['category'=>$category]);
 
     }
+
 // Mostrar servicios por categoría
     public function search($id_category){
         $category = Category::find($id_category);
@@ -41,6 +42,7 @@ class ViewClientController extends Controller
     //     $services->fk_category=g $data['fk_category'];
 
     // }
+
     public function index()
     {
         // return view for service show
@@ -62,4 +64,21 @@ class ViewClientController extends Controller
 
         return view('/service/ServiceShowAll')->with(['service' => $service]);
     }
+    
+    // without login 
+    public function home()
+    {
+        $category = Category::all();
+        
+        return view('Home')->with(['category'=>$category]);
+    }
+
+    public function service($id_category){
+        $category = Category::find($id_category);
+
+        $service = Service::where('fk_category', $id_category)->get();
+      
+        return view('/Home/Home2')->with(['service' => $service, 'category' => $category]);
+    }
+
 }

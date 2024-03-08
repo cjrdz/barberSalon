@@ -29,10 +29,10 @@
 
             {{-- Yield to see sidebar content--}}
             @yield( 'content' )
-
-            </div>
-            </main>
         </div>
+    </main>
+    @yield( 'content1' )
+</div>
         
     </body>
 </html>

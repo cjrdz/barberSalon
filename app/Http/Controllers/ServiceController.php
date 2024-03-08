@@ -183,4 +183,6 @@ class ServiceController extends Controller
         //Retornar una respuesta json
         return response()->json(array('res' => true));
     }
+
+
 }

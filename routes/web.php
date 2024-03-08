@@ -21,12 +21,17 @@ use App\Http\Controllers\AppointmentController;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth/login');
 });
 
+// Route::get('/', function () {
+//     return view('Home');
+// });
+
 Route::get('/dashboard', function () {
     return view('dashboard');
+
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -112,11 +117,11 @@ Route::middleware('auth', 'employee','admin')->group(function(){
 
 });
 
-Route::middleware('auth', 'client')->group(function(){
+// Route::middleware('auth', 'client')->group(function(){
 //--------------------views to Client--------------------------
 
     // show category
-    Route::get('client/category/show', [ViewClientController::class, 'viewClient'] )->name('client.category.show');
+    Route::get('/client/category/show', [ViewClientController::class, 'viewClient'] )->name('client.category.show');
     // show service by category
     Route::get('client/service/search/{id_category}', [ViewClientController::class, 'search'])->name('client.service.search');
     // show service all
@@ -126,7 +131,11 @@ Route::middleware('auth', 'client')->group(function(){
     // show shopping cart
     Route::get('/cart/show', [CartController::class, 'index'] )->name('cart.show');
 
-});
+// Without login 
+// view home with category
+Route::get('/', [ViewClientController::class,'home'])->name('home');
+// view home with service
+Route::get('/service/search/{id_category}', [ViewClientController::class,'service'])->name('service.search');
 
 
 
