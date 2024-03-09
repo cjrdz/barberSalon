@@ -41,7 +41,7 @@
             role="img"
             viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg"
-            class="w-6 fill-current text-[#E4405F]"
+            class="w-6  text-slate-600 dark:text-slate-300 fill-current hover:text-[#E4405F]"
         >
             <title>Instagram</title>
             <path

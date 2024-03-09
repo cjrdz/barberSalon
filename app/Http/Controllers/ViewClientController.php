@@ -26,23 +26,6 @@ class ViewClientController extends Controller
         return view('/category/ClientServiceShow')->with(['service' => $service, 'category' => $category]);
     }
 
-    
-    // public function searchshow(Request $request, Service $services){
-
-    //     $data = request()->validate([
-    //         'name_service' => 'required',
-    //         'timeframe' => 'required',
-    //         'precio' => 'required',
-    //         'fk_category' => 'required',
-    //     ]);
-    //     // reemplazar datos
-    //     $services->name_service= $data['name_service'];
-    //     $services->timeframe= $data['timeframe'];
-    //     $services->precio= $data['precio'];
-    //     $services->fk_category=g $data['fk_category'];
-
-    // }
-
     public function index()
     {
         // return view for service show
@@ -78,7 +61,7 @@ class ViewClientController extends Controller
 
         $service = Service::where('fk_category', $id_category)->get();
       
-        return view('/Home/Home2')->with(['service' => $service, 'category' => $category]);
+        return view('/Home/HomeService')->with(['service' => $service, 'category' => $category]);
     }
 
 }

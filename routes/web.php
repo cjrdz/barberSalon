@@ -25,10 +25,6 @@ Route::get('/login', function () {
     return view('auth/login');
 });
 
-// Route::get('/', function () {
-//     return view('Home');
-// });
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 
@@ -38,26 +34,24 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    // Route::get('/CategoryShow',[CategoryController::class, 'index']); 
-
 });
 
 
 
 Route::middleware('auth', 'admin')->group(function(){
 
-    //--------------------Users views--------------------------
-    Route::get('/user/show', [UserController::class, 'index'] )->name('user.show');
-    // Route create front-end controller
-    Route::get('/user/create', [UserController::class,'create'])->name('user.create');
-    // Route create back-end controller
-    Route::post('/userStore', [UserController::class,'store']);
-    // Route editing front-end controller
-    Route::get('/user/edit/{user_id}', [UserController::class,'edit'])->name('user.edit');
-    // Route update back-end controller
-    Route::put('/user/update/{users}', [UserController::class,'update'])->name('user.update');
-    // Route delete back-end controller
-    Route::delete('user/destroy/{id}', [UserController::class,'destroy'])->name('user.destroy');
+        //--------------------Users views--------------------------
+        Route::get('/user/show', [UserController::class, 'index'] )->name('user.show');
+        // Route create front-end controller
+        Route::get('/user/create', [UserController::class,'create'])->name('user.create');
+        // Route create back-end controller
+        Route::post('/userStore', [UserController::class,'store']);
+        // Route editing front-end controller
+        Route::get('/user/edit/{user_id}', [UserController::class,'edit'])->name('user.edit');
+        // Route update back-end controller
+        Route::put('/user/update/{users}', [UserController::class,'update'])->name('user.update');
+        // Route delete back-end controller
+        Route::delete('user/destroy/{id}', [UserController::class,'destroy'])->name('user.destroy');
 
 });
 
@@ -117,25 +111,25 @@ Route::middleware('auth', 'employee','admin')->group(function(){
 
 });
 
-// Route::middleware('auth', 'client')->group(function(){
+Route::middleware('auth', 'client')->group(function(){
 //--------------------views to Client--------------------------
+        // show category
+        Route::get('/client/category/show', [ViewClientController::class, 'viewClient'] )->name('client.category.show');
+        // show service by category
+        Route::get('client/service/search/{id_category}', [ViewClientController::class, 'search'])->name('client.service.search');
+        // show service all
+        Route::get('client/service/all/', [ViewClientController::class, 'index'])->name('client.service.all');
+        //--------------------views to Shopping Cart--------------------------
+        // show shopping cart
+        Route::get('/cart/show', [CartController::class, 'index'] )->name('cart.show');
 
-    // show category
-    Route::get('/client/category/show', [ViewClientController::class, 'viewClient'] )->name('client.category.show');
-    // show service by category
-    Route::get('client/service/search/{id_category}', [ViewClientController::class, 'search'])->name('client.service.search');
-    // show service all
-    Route::get('client/service/all/', [ViewClientController::class, 'index'])->name('client.service.all');
-
-//--------------------views to Shopping Cart--------------------------
-    // show shopping cart
-    Route::get('/cart/show', [CartController::class, 'index'] )->name('cart.show');
+});
 
 // Without login 
-// view home with category
-Route::get('/', [ViewClientController::class,'home'])->name('home');
-// view home with service
-Route::get('/service/search/{id_category}', [ViewClientController::class,'service'])->name('service.search');
+        // view home with category
+        Route::get('/', [ViewClientController::class,'home'])->name('home');
+        // view home with service
+        Route::get('/service/search/{id_category}', [ViewClientController::class,'service'])->name('service.search');
 
 
 

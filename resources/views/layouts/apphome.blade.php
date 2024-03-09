@@ -26,7 +26,7 @@
             <div class="flex -mr-4 items-center">
                 {{-- <a class="text-sky-500 hover:rotate-6 " href="">Home</a> --}}
                 <div class="space-x-8 ml-8 md:flex hidden">
-                    <a class="px-3 py-2 text-gray-500 dark:text-gray-300 hover:bg-gray-500 rounded-md" href="">Home</a>
+                    <a class="px-3 py-2 text-gray-500 dark:text-gray-300 hover:bg-gray-500 rounded-md" href="/">Home</a>
                     <a class="text-gray-500 dark:text-gray-400 px-3 py-2 hover:bg-gray-500 rounded-md hover:text-gray-700 dark:hover:text-gray-300 transition-colors" href="">About</a>
                     <a class="text-gray-500 dark:text-gray-400 px-3 py-2 hover:bg-gray-500 rounded-md hover:text-gray-700 dark:hover:text-gray-300 transition-colors" href="">Nosotros</a>
                     <a class="text-gray-500 dark:text-gray-400 px-3 py-2 hover:bg-gray-500 rounded-md hover:text-gray-700 dark:hover:text-gray-300 transition-colors" href="">Contacto</a>
@@ -57,8 +57,8 @@
         </div>
 
         {{-- Links para phone --}}
-        <div class="space-y-1 pb-3 border-t pt-2  md:hidden">
-            <a class="text-gray-500 dark:text-gray-300 block px-3 py-2 rounded-md" href="">Home</a>
+        <div class="space-y-1 pb-3 border-t pt-2 hidden md:hidden">
+            <a class="text-gray-500 dark:text-gray-300 block px-3 py-2 rounded-md" href="/">Home</a>
             <a class="text-gray-500 dark:text-gray-400 hover:bg-gray-500 hover:text-gray-700 dark:hover:text-gray-300 block px-3 py-2 rounded-md transition-colors" href="">About</a>
             <a class="text-gray-500 dark:text-gray-400 hover:bg-gray-500 hover:text-gray-700 dark:hover:text-gray-300 block px-3 py-2 rounded-md transition-colors" href="">Nosotros</a>
             <a class="text-gray-500 dark:text-gray-400 hover:bg-gray-500 hover:text-gray-700 dark:hover:text-gray-300 block px-3 py-2 rounded-md transition-colors" href="">Contacto</a>
@@ -108,8 +108,7 @@
           class="mt-4 grid md:grid-cols-4 grid-cols-3 max-w-6xl items-center mx-auto gap-4 lg-grid-cols-4 ">
 
           @yield('cards')
-          {{-- @component('components.CardCategory', ['category' => $category])
-          @endcomponent  --}}
+    
         </div>
         @yield('content')
     </main>
