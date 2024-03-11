@@ -57,7 +57,7 @@
         </div>
 
         {{-- Links para phone --}}
-        <div class="space-y-1 pb-3 border-t pt-2 hidden md:hidden">
+        <div class="space-y-1 pb-3 border-t pt-2 md:hidden">
             <a class="text-gray-500 dark:text-gray-300 block px-3 py-2 rounded-md" href="/">Home</a>
             <a class="text-gray-500 dark:text-gray-400 hover:bg-gray-500 hover:text-gray-700 dark:hover:text-gray-300 block px-3 py-2 rounded-md transition-colors" href="">About</a>
             <a class="text-gray-500 dark:text-gray-400 hover:bg-gray-500 hover:text-gray-700 dark:hover:text-gray-300 block px-3 py-2 rounded-md transition-colors" href="">Nosotros</a>
