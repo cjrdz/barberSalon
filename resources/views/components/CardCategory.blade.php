@@ -1,7 +1,7 @@
 
 
 @foreach ($category as $item)
-    <div class="max-w-sm rounded  overflow-hidden shadow-lg dark:bg-slate-800 bg-slate-950 text-white transform transition-transform hover:scale-105 ">
+    <div class="max-w-sm rounded overflow-hidden shadow-lg dark:bg-slate-800 bg-slate-950 text-white transform transition-transform hover:scale-105 ">
 
       @if (Auth::user())
         <a href="{{ route('client.service.search', ['id_category' => $item->id_category]) }}" class="block">  

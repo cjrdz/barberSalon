@@ -1,8 +1,8 @@
   {{-- FOOTER --}}
   <footer class="py-10">
-      <div class="flex flex-col items-center space-y-4 md:space-y-0 md:flex-row md:justify-center max-w-6xl mx-auto">
+      <div class="flex flex-col items-center space-y-4">
           <div class="text-center text-sm text-slate-600 dark:text-slate-300">
-              <div class="flex space-x-6 pt-2 items-center md:flex-row md:justify-center py-4">
+              <div class="flex space-x-6 pt-2 items-center md:flex-row justify-center py-4">
                   <!-- Facebook -->
                   <a href="" class="transform hover:scale-150 duration-300">
                       <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"

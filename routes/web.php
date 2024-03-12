@@ -131,6 +131,10 @@ Route::middleware('auth', 'client')->group(function(){
         // view home with service
         Route::get('/service/search/{id_category}', [ViewClientController::class,'service'])->name('service.search');
 
+        Route::get('/about', function () {
+                return view('Home/About');
+            })->name('about');
+
 
 
 
